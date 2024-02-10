@@ -39,6 +39,91 @@ bygoogle.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5549983763389991"
     crossorigin="anonymous"></script>
     
+<!--애드센스 무효트래픽 방지코드 시작-->
+<script>
+    function printRights() {
+        console.log("%c캐시트리 애드센스 무효 트래픽 감지중", "color: yellow; font-size: 32px");
+        console.log("악의적인 로봇 활동 및 애드센스 무효 트래픽을 차단합니다.\n본 코드는 캐시트리 수강생에게만 지급되며, 무단 배포를 금지합니다.");
+        console.log("캐시트리 주소: https://cash-tree.net")
+    }
+    
+    // 로봇 의심 경고 메시지
+    function showAlert() {
+      alert('무효 트래픽 발생이 감지되었습니다.\n일시적으로 접근이 제한됩니다.');
+    window.location.replace("https://static.vecteezy.com/system/resources/previews/002/293/499/original/exclamation-mark-symbol-red-warning-dangerous-icon-on-white-background-free-vector.jpg");
+    }
+    
+    // 해당 url 접근 차단
+    function blockAccess() {
+      const blockTimeEnd = new Date();
+      blockTimeEnd.setHours(blockTimeEnd.getHours() + 1);
+      const blockInfo = localStorage.getItem("blockInfo") ? JSON.parse(localStorage.getItem("blockInfo")) : [];
+    
+      const newBlockData = {
+        "url": window.location.href,
+        "blockTimeEnd": blockTimeEnd,
+      };
+    
+      blockInfo.push(newBlockData);
+      localStorage.setItem("blockInfo", JSON.stringify(blockInfo));
+    
+      console.log(blockInfo);
+    
+      showAlert();
+    }
+    
+    // 애드센스 클릭 카운트 추가
+    function addClickCount() {
+      let clickCount = localStorage.getItem("clickCount") ? parseInt(localStorage.getItem("clickCount")) : 0;
+      clickCount++;
+    
+      if (clickCount > 4) {
+        blockAccess();
+        clickCount = 0;
+      }
+    
+      localStorage.setItem("clickCount", clickCount.toString());
+    }
+    
+    // 차단된 url 검사
+    function checkBlockedPage() {
+        printRights();
+      const blockInfo = localStorage.getItem("blockInfo") ? JSON.parse(localStorage.getItem("blockInfo")) : [];
+    
+      let isBlocked = false;
+      blockInfo.forEach(function (blockData, index) {
+        if (blockData.url === window.location.href) {
+          const blockTimeEnd = new Date(blockData.blockTimeEnd);
+          const now = new Date();
+    
+          if (now < blockTimeEnd) {
+            isBlocked = true;
+          } else {
+            blockInfo.splice(index, 1);
+            localStorage.setItem("blockInfo", JSON.stringify(blockInfo));
+          }
+        }
+      });
+    
+      if (isBlocked) showAlert();
+    }
+    
+    // 애드센스 클릭 이벤트 리스너
+    window.addEventListener('blur', function () {
+      if (document.activeElement && document.activeElement.src.includes('google')) {
+        // 클릭 수 증가
+        addClickCount();
+    
+        setTimeout(function () {
+          document.activeElement.blur();
+        }, 1);
+      }
+    });
+    
+    checkBlockedPage();
+    </script>
+                <!--애드센스 무효트래픽 방지코드 끝-->
+
     </head>
     <body class="bg-dark d-flex flex-column h-100 ">
         <main class="flex-shrink-0">
@@ -65,17 +150,16 @@ bygoogle.js"></script>
                                 <p class="lead fw-normal text-white mb-5">프리미어리그 시즌이 한창인데요. <br><br> 손흥민 선수가 주장인 토트넘이 현재 빡빡한 일정을 이어가고 있습니다. 
                                     <br><br>토트넘 경기 중계를 <br><span class="text-decoration-underline "> 바로 시청할 수 있습니다.</span></p>
                                     
-                                    <!-- adsense -->
-                                   <div class="text-center">
-                                    <!-- 굿스탁_스포츠_고정 -->
-                                    <ins class="adsbygoogle"
-                                         style="display:inline-block;width:300px;height:250px"
-                                         data-ad-client="ca-pub-5549983763389991"
-                                         data-ad-slot="3172202714"></ins>
-                                    <script>
-                                         (adsbygoogle = window.adsbygoogle || []).push({});
-                                    </script>
-                                  </div>
+                                    <!-- 굿스탁_스포츠_디스플레이 -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-5549983763389991"
+data-ad-slot="5201700184"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
                             </div>
 
@@ -100,15 +184,20 @@ bygoogle.js"></script>
                     </div>
                 
                 </div>
-                <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-5549983763389991"
-                data-ad-slot="5201700184"
-                data-ad-format="auto"
-                data-full-width-responsive="false"></ins>
-           <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-           </script>
+                <!-- adsense -->
+   <div class="my-5 text-center">
+
+    <!--자동광고-->
+    <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5549983763389991"
+     data-ad-slot="9290056103"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
             </header>
            
             <section class="bg-dark py-5">
